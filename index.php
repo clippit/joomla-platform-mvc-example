@@ -3,8 +3,8 @@
 define('_JEXEC', 1);
 
 // Setup the base path related constant.
-define('JPATH_BASE', dirname(__FILE__));
-define('JPATH_SITE', JPATH_BASE);
+define('JPATH_SITE', dirname(__FILE__) . '/protected');
+define('JPATH_BASE', JPATH_SITE);
 define('JPATH_PLATFORM', dirname(dirname(__FILE__)) . '/joomla/libraries');
 
 // Import the platform
@@ -20,7 +20,7 @@ if (!class_exists('JLoader'))
 // JLog::addLogger(array('logger' => 'echo'), JLog::ALL);
 
 // Setup autoloader, {@link http://developer.joomla.org/manual/ch01s04.html}
-JLoader::registerPrefix('LH', __DIR__);
+JLoader::registerPrefix('LH', JPATH_BASE);
 
 try
 {
