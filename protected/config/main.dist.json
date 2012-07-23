@@ -1,0 +1,21 @@
+{
+	"urlRouter":
+	{
+		"defaultController": "site",
+		"routes":
+		[
+			{
+				"route": "index",
+				"controller": "site"
+			},
+			{
+				"route": "user",
+				"controller": "view"
+			},
+			{
+				"route": "user/:user_id",
+				"controller": "view"
+			}
+		]
+	}
+}
