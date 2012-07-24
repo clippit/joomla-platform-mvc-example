@@ -1,7 +1,14 @@
 {
-	"urlRouter":
+	"db_driver": "sqlite",
+	"db_host": "",
+	"db_user": "",
+	"db_pass": "",
+	"db_name": "protected/data/test.db",
+	"db_prefix": "lh_",
+
+	"url_router":
 	{
-		"defaultController": "site",
+		"default_controller": "site",
 		"routes":
 		[
 			{
@@ -17,5 +24,7 @@
 				"controller": "view"
 			}
 		]
-	}
+	},
+
+	"debug":"1"
 }

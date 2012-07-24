@@ -17,7 +17,7 @@ if (!class_exists('JLoader'))
 }
 
 // Set error handler to echo.
-// JLog::addLogger(array('logger' => 'echo'), JLog::ALL);
+JLog::addLogger(array('logger' => 'echo'), JLog::ALL);
 
 // Setup autoloader, {@link http://developer.joomla.org/manual/ch01s04.html}
 JLoader::registerPrefix('LH', JPATH_BASE);
@@ -31,7 +31,7 @@ try
 	JFactory::$application = $app;
 
 	// Execute the application.
-	$app->execute();
+	$app->loadDatabase()->execute();
 }
 catch (Exception $e)
 {
