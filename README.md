@@ -34,10 +34,16 @@ Notes
 -----
 The MVC framework of Joomla! Platform is quite lightweight.
 
-* There is no ORM pattern or something else. It only provides simple wrapper for SQL query.
+* There is a `JTable` class providing support for [Active Record Pattern](http://en.wikipedia.org/wiki/Active_record_pattern) but it's not involved with `JModel` by default. I wrote a simple model class which extends `JTable`.
 * Controllers only support one executable task per class via the `execute` method. It's different from some other frameworks which provide two-layer "Controller-Action" support.
 
 
 Todos
 -----
 * Simple view layer with template support
+
+
+Thanks
+------
+* Great work by Louis Landry: https://github.com/LouisLandry/pulltester/
+* A project from GSoC this year: https://github.com/stefanneculai/Web-service-API/
