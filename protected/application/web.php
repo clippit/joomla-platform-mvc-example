@@ -24,9 +24,19 @@ class LHApplicationWeb extends JApplicationWeb
 	}
 
 	/**
+	 * Method to initialize the app
+	 * @return LHApplicationWeb This object for method chaining.
+	 */
+	public function init()
+	{
+		$this->loadDatabase()->loadRouter()->loadTemplate();
+		return $this;
+	}
+
+	/**
 	 * Method to create a database driver for the application.
 	 *
-	 * @return  PTApplicationWeb  This object for method chaining.
+	 * @return  LHApplicationWeb  This object for method chaining.
 	 */
 	public function loadDatabase()
 	{
@@ -60,7 +70,7 @@ class LHApplicationWeb extends JApplicationWeb
 	 *
 	 * @param   LHView  $template  The optional template to load.
 	 *
-	 * @return  PTApplicationWeb  This object for method chaining.
+	 * @return  LHApplicationWeb  This object for method chaining.
 	 */
 	public function loadTemplate(LHView $template = null)
 	{
@@ -70,15 +80,22 @@ class LHApplicationWeb extends JApplicationWeb
 		return $this;
 	}
 
-	protected function doExecute()
+	/**
+	 * Method to load URL Routes from config file
+	 * @return LHApplicationWeb This object for method chaining.
+	 */
+	public function loadRouter()
 	{
-		// Initialize URL Router
-		// @TODO seperate this into another method
 		$this->_router = new JApplicationWebRouterBase($this);
 		$this->_router->setControllerPrefix('LHController')
 			->setDefaultController($this->get('url_router.default_controller', 'site'));
 		$this->addRoutes($this->get('url_router.routes', array()));
 
+		return $this;
+	}
+
+	protected function doExecute()
+	{
 		// Execute
 		$this->_router->execute($this->get('uri.route'));
 	}
