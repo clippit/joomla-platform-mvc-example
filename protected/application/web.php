@@ -61,7 +61,7 @@ class LHApplicationWeb extends JApplicationWeb
 	protected function fetchConfigurationData($file = '', $class = '')
 	{
 		// Instantiate variables.
-		$config = array();
+		$_config = array();
 
 		// Find the configuration file path.
 		if (!defined('JPATH_CONFIGURATION'))
@@ -86,14 +86,14 @@ class LHApplicationWeb extends JApplicationWeb
 		}
 
 		// Load the configuration file into an object.
-		$config = json_decode(file_get_contents($file));
-		if ($config === null)
+		$_config = json_decode(file_get_contents($file));
+		if ($_config === null)
 		{
 			throw new RuntimeException(sprintf('Unable to parse the configuration file %s.', $file));
 		}
 
-		JFactory::$config = $config;
-		return $config;
+		JFactory::$config = new JRegistry($_config);
+		return $_config;
 	}
 
 	/**
