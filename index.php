@@ -31,7 +31,7 @@ try
 	JFactory::$application = $app;
 
 	// Execute the application.
-	$app->loadDatabase()->execute();
+	$app->loadDatabase()->loadTemplate()->execute();
 }
 catch (Exception $e)
 {

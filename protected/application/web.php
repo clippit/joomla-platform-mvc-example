@@ -8,6 +8,22 @@ class LHApplicationWeb extends JApplicationWeb
 	private $_router;
 
 	/**
+	 * Global render template
+	 * @var LHView
+	 */
+	protected $template;
+
+	/**
+	 * Get the template.
+	 *
+	 * @return  LHView  The application template.
+	 */
+	public function getTemplate()
+	{
+		return $this->template;
+	}
+
+	/**
 	 * Method to create a database driver for the application.
 	 *
 	 * @return  PTApplicationWeb  This object for method chaining.
@@ -39,6 +55,20 @@ class LHApplicationWeb extends JApplicationWeb
 		return $this;
 	}
 
+	/**
+	 * Method to create a template for the application.
+	 *
+	 * @param   LHView  $template  The optional template to load.
+	 *
+	 * @return  PTApplicationWeb  This object for method chaining.
+	 */
+	public function loadTemplate(LHView $template = null)
+	{
+		// Get the template.
+		$this->template = isset($template) ? $template : new LHView;
+
+		return $this;
+	}
 
 	protected function doExecute()
 	{
