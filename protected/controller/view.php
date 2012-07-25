@@ -1,11 +1,11 @@
 <?php
-class LHControllerView extends JControllerBase
+class LHControllerView extends LHController
 {
 	/**
-	 * Entry of this controller
-	 * @return boolean success status
+	 * Build the page and set buffers in the template object.
+	 * @return void
 	 */
-	public function execute() {
+	public function build() {
 		$id = $this->input->getInt('user_id');
 		if ($id)
 		{
@@ -15,13 +15,6 @@ class LHControllerView extends JControllerBase
 		{
 			$this->viewAll();
 		}
-		// Render the template.
-		$templatePath = $this->getApplication()->get('template.path', JPATH_SITE . '/template');
-		$buffer = $this->getApplication()->getTemplate()->render($templatePath . '/main.php');
-
-		// Set the rendered theme to the response body.
-		$this->getApplication()->setBody($buffer);
-		return true;
 	}
 
 	/**
@@ -34,9 +27,7 @@ class LHControllerView extends JControllerBase
 		if (!$user->load($id))
 			throw new RuntimeException("User not exists.", 404);
 
-		$view = new LHViewUser($user, $this->getViewPaths());
-		$view->setLayout('user.view');
-		$this->getApplication()->getTemplate()->buffer->set('page.content', $view->render());
+		$this->renderContent($user, 'user.view');
 	}
 
 	/**
@@ -45,9 +36,19 @@ class LHControllerView extends JControllerBase
 	public function viewAll()
 	{
 		$users = LHModel::getInstance('user')->findAll();
-		
-		$view = new LHViewUser($users, $this->getViewPaths());
-		$view->setLayout('user.index');
+		$this->renderContent($users, 'user.index');
+	}
+
+	/**
+	 * Create View Class and render it into page.content template
+	 * @param  mixed  $model  The model object or array of models
+	 * @param  string $layout Render layout
+	 * @return void
+	 */
+	protected function renderContent($model, $layout)
+	{
+		$view = new LHViewUser($model, $this->getViewPaths());
+		$view->setLayout($layout);
 		$this->getApplication()->getTemplate()->buffer->set('page.content', $view->render());
 	}
 

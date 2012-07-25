@@ -1,16 +1,13 @@
 <?php
-class LHControllerSite extends JControllerBase
+class LHControllerSite extends LHController
 {
-	public function execute() {
+	/**
+	 * Build the page and set buffers in the template object.
+	 * @return void
+	 */
+	public function build() {
 		$this->getApplication()->getTemplate()->buffer->set('page.header.title', 'Joomla! Platform MVC Example');
 		$body = '<p><a href="user/">View Users</a></p>';
 		$this->getApplication()->getTemplate()->buffer->set('page.content', $body);
-
-		// Render the template.
-		$templatePath = $this->getApplication()->get('template.path', JPATH_SITE . '/template');
-		$buffer = $this->getApplication()->getTemplate()->render($templatePath . '/main.php');
-
-		// Set the rendered theme to the response body.
-		$this->getApplication()->setBody($buffer);
 	}
 }
