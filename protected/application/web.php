@@ -37,6 +37,14 @@ class LHApplicationWeb extends JApplicationWeb
 			->setGenerator($caption)
 			->setHtml5(true);
 
+		// Set onBeforeRender event callback to change page title
+		// Anonymous function with $this is available in PHP 5.4+
+		// If you don't like it, just comment out these lines
+		$this->registerEvent('onBeforeRender', function() use ($caption) {
+			$title = $this->getDocument()->getTitle();
+			$this->getDocument()->setTitle($title ? "$title - $caption" : $caption);
+		});
+
 		return $this;
 	}
 
