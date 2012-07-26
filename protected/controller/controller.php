@@ -3,14 +3,10 @@ class LHController extends JControllerBase
 {
 	public function execute() {
 		// Build page content
-		$this->build();
+		$output = $this->build();
 
-		// Render the template.
-		$templatePath = $this->getApplication()->get('template.path', JPATH_SITE . '/template');
-		$buffer = $this->getApplication()->getTemplate()->render($templatePath . '/main.php');
-
-		// Set the rendered theme to the response body.
-		$this->getApplication()->setBody($buffer);
+		// Render document
+		JFactory::getDocument()->setBuffer($output, array('type' => 'component', 'name' => null, 'title' => null));
 
 		return true;
 	}

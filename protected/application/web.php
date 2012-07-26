@@ -29,7 +29,14 @@ class LHApplicationWeb extends JApplicationWeb
 	 */
 	public function init()
 	{
-		$this->loadDatabase()->loadRouter()->loadTemplate();
+		$this->initialise()->loadDatabase()->loadRouter();
+
+		// Set generator info
+		$caption = 'Joomla! Platform MVC Example';
+		$this->getDocument()
+			->setGenerator($caption)
+			->setHtml5(true);
+
 		return $this;
 	}
 

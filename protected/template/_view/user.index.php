@@ -1,12 +1,12 @@
 <?php
 /** @var $this LHViewUser */
 
-JFactory::getApplication()->getTemplate()->buffer->set('page.header.title', "Users");
+JFactory::getDocument()->setTitle("Users");
 ?>
 
 <h2>All Users</h2>
 
-<table border="1" cellspacing="0" cellpadding="0">
+<table>
 	<?php foreach ($this->userList as $user): ?>
 		<tr>
 			<td><a href="<?php echo $user->id; ?>"><?php echo $user->id; ?></a></td>

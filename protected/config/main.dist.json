@@ -26,5 +26,13 @@
 		]
 	},
 
-	"debug": "0"
+	"themes":
+	{
+		"base": "protected/template"
+	},
+
+	"language": "en-US",
+
+	"debug": false,
+	"debug_lang": false
 }
