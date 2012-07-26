@@ -7,6 +7,6 @@ class LHControllerSite extends LHController
 	 */
 	public function build() {
 		JFactory::getDocument()->setTitle("Home");
-		return '<p><a href="user/">View Users</a></p>';
+		return '<p><a href="user/" class="btn btn-large">View Users</a></p>';
 	}
 }
