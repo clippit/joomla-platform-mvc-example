@@ -47,16 +47,16 @@ class LHApplicationWeb extends JApplicationWeb
 	 */
 	public function loadDatabase()
 	{
-		$dbName = $this->get('db_name');
+		$dbName = $this->get('database.name');
 
 		$this->db = JDatabaseDriver::getInstance(
 			array(
-				'driver' => $this->get('db_driver'),
-				'host' => $this->get('db_host'),
-				'user' => $this->get('db_user'),
-				'password' => $this->get('db_pass'),
+				'driver' => $this->get('database.driver'),
+				'host' => $this->get('database.host'),
+				'user' => $this->get('database.user'),
+				'password' => $this->get('database.pass'),
 				'database' => $dbName,
-				'prefix' => $this->get('db_prefix')
+				'prefix' => $this->get('database.prefix')
 			)
 		);
 

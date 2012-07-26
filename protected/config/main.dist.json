@@ -1,10 +1,13 @@
 {
-	"db_driver": "sqlite",
-	"db_host": "",
-	"db_user": "",
-	"db_pass": "",
-	"db_name": "protected/data/test.db",
-	"db_prefix": "lh_",
+	"database":
+	{
+		"driver": "sqlite",
+		"host": "",
+		"user": "",
+		"pass": "",
+		"name": "protected/data/test.db",
+		"prefix": "lh_"
+	},
 
 	"url_router":
 	{
