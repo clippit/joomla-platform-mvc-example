@@ -8,22 +8,6 @@ class LHApplicationWeb extends JApplicationWeb
 	private $_router;
 
 	/**
-	 * Global render template
-	 * @var LHView
-	 */
-	protected $template;
-
-	/**
-	 * Get the template.
-	 *
-	 * @return  LHView  The application template.
-	 */
-	public function getTemplate()
-	{
-		return $this->template;
-	}
-
-	/**
 	 * Method to initialize the app
 	 * @return LHApplicationWeb This object for method chaining.
 	 */
@@ -76,21 +60,6 @@ class LHApplicationWeb extends JApplicationWeb
 
 		// Set the database to our static cache.
 		JFactory::$database = $this->db;
-
-		return $this;
-	}
-
-	/**
-	 * Method to create a template for the application.
-	 *
-	 * @param   LHView  $template  The optional template to load.
-	 *
-	 * @return  LHApplicationWeb  This object for method chaining.
-	 */
-	public function loadTemplate(LHView $template = null)
-	{
-		// Get the template.
-		$this->template = isset($template) ? $template : new LHView;
 
 		return $this;
 	}
