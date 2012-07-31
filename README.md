@@ -27,12 +27,6 @@ Clone or Download Joomla Platform into `joomla` directory and this repository un
     git clone https://github.scm.corp.ebay.com/letzhang/joomla-platform-mvc-example.git
 
 
-Requirement
------------
-
-There is one place using the anonymous function with `$this` which is support by PHP since 5.4. If you don't have this version, just go to `protected/application/web.php` and find `init` method then follow the instruction there to comment out some lines.
-
-
 Configuration
 -------------
 You can refer `protected/config/main.dist.json` and copy it into `main.json` for your own changes.
